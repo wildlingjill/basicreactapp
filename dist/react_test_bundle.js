@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var _react = __webpack_require__(1);
 
@@ -56,14 +56,12 @@
 
 	var _App = __webpack_require__(178);
 
-	function _interopRequireDefault(obj) {
-		return obj && obj.__esModule ? obj : { default: obj };
-	}
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// object containing user name
 	var person = {
-		firstName: "Daniel",
-		lastName: "Brain"
+		firstName: "Jill",
+		lastName: "Robinson"
 	};
 
 	// JSX element with JS injection
@@ -74,7 +72,7 @@
 	// );
 
 	// render element in container
-	_reactDom2.default.render(_react2.default.createElement(_App.App, { user: person }), document.getElementById('container'));
+	_reactDom2.default.render(_react2.default.createElement(_App.App, { user: person }), document.getElementById("container"));
 
 /***/ },
 /* 1 */
@@ -21514,10 +21512,10 @@
 /* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+		value: true
 	});
 	exports.App = undefined;
 
@@ -21541,31 +21539,31 @@
 
 	// extends means inherits from React.Component
 	var App = exports.App = function (_React$Component) {
-	  _inherits(App, _React$Component);
+		_inherits(App, _React$Component);
 
-	  function App() {
-	    _classCallCheck(this, App);
+		function App() {
+			_classCallCheck(this, App);
 
-	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
-	  }
+			return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+		}
 
-	  _createClass(App, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          'Hello, ',
-	          (0, _util.formatName)(this.props.user)
-	        )
-	      );
-	    }
-	  }]);
+		_createClass(App, [{
+			key: "render",
+			value: function render() {
+				return _react2.default.createElement(
+					"div",
+					null,
+					_react2.default.createElement(
+						"h1",
+						null,
+						"Hello, ",
+						(0, _util.formatName)(this.props.user)
+					)
+				);
+			}
+		}]);
 
-	  return App;
+		return App;
 	}(_react2.default.Component);
 
 /***/ },
@@ -21577,11 +21575,15 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.formatName = formatName;
 	// function to format the name correctly
-	function formatName(person) {
+
+	// export function formatName(person) {
+	// 	return person.firstName + " " + person.lastName;
+	// }
+
+	var formatName = exports.formatName = function formatName(person) {
 		return person.firstName + " " + person.lastName;
-	}
+	};
 
 /***/ }
 /******/ ]);

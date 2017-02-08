@@ -5,8 +5,8 @@ import { App } from "./components/App.jsx";
 
 // object containing user name
 const person = {
-	firstName: "Daniel",
-	lastName: "Brain"
+	firstName: "Jill",
+	lastName: "Robinson"
 };
 
 // JSX element with JS injection
