@@ -2,12 +2,6 @@
 <html lang="en">
 	<meta charset='utf-8'>
 	<head>
-
-		<!-- script tag to use text/babel conversion -->
-		<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.22.1/babel.js"></script> -->
-		<!-- script tags for react and react-dom -->
-		<!-- <script src='node_modules/react/dist/react.js'></script>
-		<script src='node_modules/react-dom/dist/react-dom.js'></script> -->
 		<style>
 			#container h1 {
 				color: black;
@@ -17,6 +11,8 @@
 	<body>
 		<div id="container" />
 
-		<script type="text/javascript" src="../dist/react_test_bundle.js"></script>
+		<!-- pulls in react code from mounted static folder, so user can only access bundled code not source code -->
+		<script type="text/javascript" src="/static/react_test_bundle.js"></script>
+
 	</body>
 </html>

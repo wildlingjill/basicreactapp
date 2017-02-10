@@ -1,9 +1,11 @@
-// function to format the name correctly
-
-// export function formatName(person) {
-// 	return person.firstName + " " + person.lastName;
-// }
 
 export const formatName = (person) => {
 	return person.firstName + " " + person.lastName;
 };
+
+// fetch only available in newer browsers but can polyfill for older browsers
+export const getJSON = () => {
+	return fetch("/json").then(function(response){
+    	return response.json();
+	});
+}

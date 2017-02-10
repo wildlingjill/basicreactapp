@@ -64,13 +64,6 @@
 		lastName: "Robinson"
 	};
 
-	// JSX element with JS injection
-	// const element = (
-	// 	<h1>
-	// 		Hello, {formatName(user)}
-	// 	</h1>
-	// );
-
 	// render element in container
 	_reactDom2.default.render(_react2.default.createElement(_App.App, { user: person }), document.getElementById("container"));
 
@@ -21517,7 +21510,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.App = undefined;
+	exports.Button = exports.App = undefined;
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -21535,7 +21528,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	// import { formatName } imports that function from util.js, can add other functions with formatName, formatAge etc.
+	// import { formatName } imports that function from util.js, can add other functions with formatName, getJSON etc.
 
 	// extends means inherits from React.Component
 	var App = exports.App = function (_React$Component) {
@@ -21558,12 +21551,60 @@
 						null,
 						"Hello, ",
 						(0, _util.formatName)(this.props.user)
-					)
+					),
+					_react2.default.createElement(Button, null)
 				);
 			}
 		}]);
 
 		return App;
+	}(_react2.default.Component);
+
+	var Button = exports.Button = function (_React$Component2) {
+		_inherits(Button, _React$Component2);
+
+		function Button() {
+			_classCallCheck(this, Button);
+
+			var _this2 = _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).call(this));
+			// super calls constructor method on base class (react component)
+
+
+			_this2.state = {};
+			return _this2;
+		}
+
+		// 'this' needs to be kept through to anonymous function that sets state
+		// can do with either bind(this), an arrow function where this refers to parent's this, or by setting a var to this and using the var
+
+		_createClass(Button, [{
+			key: "handleClick",
+			value: function handleClick() {
+				(0, _util.getJSON)().then(function (response) {
+					this.setState({ response: response });
+				}.bind(this));
+			}
+		}, {
+			key: "render",
+			value: function render() {
+				return _react2.default.createElement(
+					"div",
+					null,
+					_react2.default.createElement(
+						"button",
+						{ onClick: this.handleClick.bind(this) },
+						"Click me for data!"
+					),
+					_react2.default.createElement(
+						"pre",
+						null,
+						JSON.stringify(this.state.response, null, 4)
+					)
+				);
+			}
+		}]);
+
+		return Button;
 	}(_react2.default.Component);
 
 /***/ },
@@ -21575,14 +21616,15 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	// function to format the name correctly
-
-	// export function formatName(person) {
-	// 	return person.firstName + " " + person.lastName;
-	// }
-
 	var formatName = exports.formatName = function formatName(person) {
 		return person.firstName + " " + person.lastName;
+	};
+
+	// fetch only available in newer browsers but can polyfill for older browsers
+	var getJSON = exports.getJSON = function getJSON() {
+		return fetch("/json").then(function (response) {
+			return response.json();
+		});
 	};
 
 /***/ }
